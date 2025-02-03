@@ -52,7 +52,6 @@ app.get('/login/if', async (req, res) => {
     if (req.cookies.massiropass !== 'ok') {
         res.render('login', { error: 'ログインしていません。もう一度ログインして下さい' })
     } else {
-        return res.redirect('/');
     }
 });
 // ログインページ

@@ -42,7 +42,7 @@ app.use(session({
 // 読み込み時ちぇっく
 app.use((req, res, next) => {
     if (req.cookies.massiropass !== 'ok' && !req.path.includes('login')) {
-        return res.redirect('/login');
+        return('/login');
     } else {
         next();
     }

@@ -37,51 +37,6 @@ app.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 5 * 24 * 60 * 60 * 1000 }
 }));
-
-//ログイン
-// 読み込み時ちぇっく
-app.use((req, res, next) => {
-    if (req.cookies.massiropass !== 'ok' && !req.path.includes('login')) {
-        return('/login');
-    } else {
-        next();
-    }
-});
-//ログイン済み？
-app.get('/login/if', async (req, res) => {
-    if (req.cookies.massiropass !== 'ok') {
-        res.render('login', { error: 'ログインしていません。もう一度ログインして下さい' })
-    } else {
-    }
-});
-// ログインページ
-app.get('/login', (req, res) => {
-    res.render('login', { error: null });
-});
-// パスワード確認
-app.post('/login', (req, res) => {
-    const password = req.body.password;
-    if (password === 'wakame' || password === 'wakame02' || password === 'wakaran') {
-        res.cookie('massiropass', 'ok', { maxAge: 5 * 24 * 60 * 60 * 1000, httpOnly: true });
-        return 
-    } else {
-        if (password === 'ohana') {
-            return ('https://ohuaxiehui.webnode.jp');
-        } else {
-            res.render('login', { error: 'パスワードが間違っています。もう一度お試しください。' });
-        }
-    }
-});
-//パスワードを忘れた場合
-app.get('/login/forgot', (req, res) => {
-  res.render(`login/forgot.ejs`);
-});
-//ログアウト
-app.post('/logout', (req, res) => {
-    res.cookie('massiropass', 'false', { maxAge: 0, httpOnly: true });
-    return res.redirect('/login');
-});
-
 //レギュラー
 app.get('/w/:id', async (req, res) => {
     const videoId = req.params.id;

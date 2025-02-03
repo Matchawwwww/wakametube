@@ -63,10 +63,10 @@ app.post('/login', (req, res) => {
     const password = req.body.password;
     if (password === 'wakame' || password === 'wakame02' || password === 'wakaran') {
         res.cookie('massiropass', 'ok', { maxAge: 5 * 24 * 60 * 60 * 1000, httpOnly: true });
-        return res.redirect('/');
+        return 
     } else {
         if (password === 'ohana') {
-            return res.redirect('https://ohuaxiehui.webnode.jp');
+            return ('https://ohuaxiehui.webnode.jp');
         } else {
             res.render('login', { error: 'パスワードが間違っています。もう一度お試しください。' });
         }

@@ -44,7 +44,6 @@ app.get('/w/:id', async (req, res) => {
     const serverUrls = {
         '0': [
         'https://natural-voltaic-titanium.glitch.me',
-        'https://balsam-secret-fine.glitch.me',
         'https://wtserver1.glitch.me',
         ],
         '1': 'https://wataamee.glitch.me',
